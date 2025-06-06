@@ -7,8 +7,11 @@ The **Student Record System** is a web-based application designed to efficiently
 The system features:
 - Seamless communication between teachers and students regarding academic updates
 - Role-based access for improved user management (e.g., Admin, Teacher, Student)
-- Enrollment tracking and academic performance monitoring
-- Attendance management and reporting tools
+- Enrollment tracking.
+- Upoading assignments by teachers and viewing by students.
+  
+  
+
 
 The backend securely stores student records, grades, and attendance information, ensuring data integrity and enabling easy access for administrative tasks.
 
