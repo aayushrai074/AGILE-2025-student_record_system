@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2025 at 11:07 AM
+-- Generation Time: Jun 06, 2025 at 11:16 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,7 +53,15 @@ INSERT INTO `activity_log` (`id`, `user_id`, `role`, `activity`, `details`, `act
 (249, 40130, 'student', 'Logged in', NULL, '2025-06-06 08:11:23'),
 (250, 1011, 'teacher', 'Logged in', NULL, '2025-06-06 08:13:01'),
 (251, 1011, 'teacher', 'Logged out', NULL, '2025-06-06 10:26:38'),
-(252, 1011, 'teacher', 'Logged in', NULL, '2025-06-06 10:40:42');
+(252, 1011, 'teacher', 'Logged in', NULL, '2025-06-06 10:40:42'),
+(253, 1011, 'teacher', 'Logged out', NULL, '2025-06-06 11:09:46'),
+(254, 1118, 'admin', 'Logged in', NULL, '2025-06-06 11:09:54'),
+(255, 1118, 'admin', 'Logged out', NULL, '2025-06-06 11:12:56'),
+(256, 1011, 'teacher', 'Logged in', NULL, '2025-06-06 11:13:02'),
+(257, 1011, 'teacher', 'Logged out', NULL, '2025-06-06 11:13:32'),
+(258, 1118, 'admin', 'Logged in', NULL, '2025-06-06 11:14:33'),
+(259, 1118, 'admin', 'Logged out', NULL, '2025-06-06 11:14:58'),
+(260, 1011, 'teacher', 'Logged in', NULL, '2025-06-06 11:15:02');
 
 -- --------------------------------------------------------
 
@@ -84,7 +92,7 @@ INSERT INTO `admin` (`admin_id`, `name`, `email`, `contact`, `role`, `user_name`
 (1114, 'Joe Khan', 'joekhan1@gmail.com', '74159159', 'Course Admin', 'jkhan_admin', '$2y$10$EN8DwneesxCe4py5OWSgNuZFAx.5gwI6rD.Z.0S4wbvHZiD./kPg2', '2025-05-28 00:00:00', 'pending'),
 (1116, 'Rachel Stephan', 'rachel11@gmail.com', '94789987', 'Teacher Admin', 'rstephan_admin', '$2y$10$6wkI3pFG/uuJ6yGbVvkfl.cyI8DyyJdqpsgZkdOu5y0N19zXYX2/C', '2025-05-27 00:00:00', 'pending'),
 (1117, 'Suspa Thompson', 'suspathomp@gmail.com', '98656741', 'Student Admin', 'sthompson_admin', '$2y$10$PgQki07Xd6bSAIF.C91txe1kDDiBGTS.eyp9mtxq.feTAbviXfn0a', NULL, 'pending'),
-(1118, 'Seemran Khadka', 'seemrankhadka@gmail.com', '12345678', 'Super Admin', 'skhadka_admin', '$2y$10$KT.rrvoC6BsGe1pB4uWqieUc.8wdOaknGbPgHsAtD7VlJY/vCc.w2', '2025-06-06 08:08:39', 'approved'),
+(1118, 'Seemran Khadka', 'seemrankhadka@gmail.com', '12345678', 'Super Admin', 'skhadka_admin', '$2y$10$KT.rrvoC6BsGe1pB4uWqieUc.8wdOaknGbPgHsAtD7VlJY/vCc.w2', '2025-06-06 11:14:33', 'approved'),
 (1119, 'Ram Karki', 'ramkarki12@gmail.com', '98601142', 'Department Admin', 'rkarki_admin', '$2y$10$YwO8Pw4WOJuySAwAciaZk.RBslLLpVedXU8Z.Gl9/xAR4uvv7E91K', '2025-06-05 15:56:10', 'pending');
 
 -- --------------------------------------------------------
@@ -102,6 +110,14 @@ CREATE TABLE `assignments` (
   `file_path` varchar(255) NOT NULL,
   `uploaded_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `assignments`
+--
+
+INSERT INTO `assignments` (`id`, `teacher_id`, `code`, `title`, `file_name`, `file_path`, `uploaded_at`) VALUES
+(1, 1011, 'AS901', 'Art ', 'Lecture 13 Part 1.pdf', 'uploads/1749201329_Lecture 13 Part 1.pdf', '2025-06-06 09:15:29'),
+(2, 1011, 'AS901', 'Art Design', 'Lecture 17-RelyGuar-Part 1.pdf', 'uploads/1749201342_Lecture 17-RelyGuar-Part 1.pdf', '2025-06-06 09:15:42');
 
 -- --------------------------------------------------------
 
@@ -128,7 +144,7 @@ CREATE TABLE `course` (
 
 INSERT INTO `course` (`code`, `name`, `type`, `credits`, `description`, `image`, `is_active`, `teacher_id`, `admin_id`, `status`) VALUES
 ('AM801', 'Animation & Motion Graphic', 'Theoretical', 1.5, 'Covers the principles of animation, frame-by-frame drawing, and motion design using tools like Adobe After Effects or Blender. Students create animated shorts, GIFs, and title sequences. It’s a blend ', 'img/animation.png', 1, 1001, 1114, 'pending'),
-('AS901', 'Sound Design for Virtual Reality', 'Theoretical', 1.5, 'explores the unique challenges and techniques of sound design in immersive environments like virtual reality (VR). Students learn how to create spatialized audio, design interactive soundscapes, and m', 'img/sounddesign.jpg', 1, 1004, 1114, 'pending'),
+('AS901', 'Sound Design for Virtual Reality', 'Theoretical', 1.5, 'explores the unique challenges and techniques of sound design in immersive environments like virtual reality (VR). Students learn how to create spatialized audio, design interactive soundscapes, and m', 'img/sounddesign.jpg', 1, 1011, 1114, 'pending'),
 ('AS903', 'Media Archaeology', 'Practical', 1.5, 'focuses on the history and evolution of media technologies, exploring the forgotten and obscure forms of communication and media devices that have shaped our digital world.', 'img/media.png', 0, NULL, 1114, 'pending'),
 ('AS905', 'Transmedia Storytelling', 'Theoretical', 1.5, 'Teaches students how to create narratives that unfold across multiple platforms and media formats, such as films, video games, social media, and interactive websites.', 'img/transmedia.jpg', 0, NULL, 1114, 'pending'),
 ('DI601', 'Digital Art & Illustration', 'Practical', 2.5, 'This course introduces students to creating art using digital tools like tablets and design software (e.g., Adobe Illustrator, Procreate). Topics include character design, vector art, and visual story', 'img/digital.png', 1, 1006, 1114, 'pending'),
@@ -183,6 +199,9 @@ CREATE TABLE `course_materials` (
 --
 
 INSERT INTO `course_materials` (`id`, `teacher_id`, `code`, `file_name`, `file_path`, `uploaded_at`) VALUES
+(1, 1011, 'AS901', 'combinepdf.pdf', 'img/combinepdf.pdf', '2025-06-06 09:11:31'),
+(2, 1011, 'AS901', 'Practical 16.pdf', 'img/Practical 16.pdf', '2025-06-06 09:11:52'),
+(3, 1011, 'AS903', 'CTEC2712-04-Interaction.pdf', 'img/CTEC2712-04-Interaction.pdf', '2025-06-06 09:12:46'),
 (4, 1001, 'AM801', 'New Usecase.png', 'img/New Usecase.png', '2025-06-02 10:55:54');
 
 -- --------------------------------------------------------
@@ -345,14 +364,14 @@ INSERT INTO `teacher` (`teacher_id`, `name`, `email`, `qualification`, `user_nam
 (1001, 'Sophie Graversen', 'sophie.graversen@university.edu', 'MA. Animation ARTS', 'sgraversen_teac', '$2y$10$ssIOtToHebs5MRZL7iYG6OqB8BfOa.QQmTS9EchKYb8cYic8S4XRu', 'img/sophie.jpg', 'This program offers a multidisciplinary approach to studio art, encompassing areas such as painting, sculpture, photography, and digital media. Students engage in individual and group critiques, semin', 'pending', 1116, 'AM801'),
 (1002, 'Alice Jensen', 'alice.jensen@university.edu', 'MA. Acting for Screen or Stage', 'ajensen_teacher', '$2y$10$iUP31r5kBqPwtz/moAToJ.kCrDA8V/pz5mzvgp7Ho4tfRHCtiLvru', 'img/alice.jpg', 'Focusing on performance techniques for both stage and screen, this course offers intensive training in acting, voice, movement, and text analysis. Students work closely with industry professionals to ', 'pending', 1116, 'TA401'),
 (1003, 'Henrik Olsen', 'henrik.olsen@university.edu', 'MA. Visual Communication(Photography)', 'holsen_teacher', '$2y$10$A/jB4ahTx6AJh36a34wMqO72SqK0xDsz9.EY53U38iAbzpHh.8NGi', 'img/henrik.jpg', 'This program emphasizes the development of visual storytelling skills through photography. Students engage in both traditional and digital imaging techniques, learning to communicate effectively throu', 'pending', 1116, NULL),
-(1004, 'Emily Norgaard', 'emily.norgaard@university.edu', 'MA. Drama and Theatre Studies', 'enorgaard_teach', '$2y$10$Q92Qi2Fvd20tSKOJNP34ou.2AuK2eHe5DQOl3yWjSe4sCX2PtEJyW', 'img/emily.jpg', 'Designed to equip students with advanced skills in editing and post-production processes, this program covers creative editing techniques, color grading, visual effects, and industry-standard workflow', 'pending', 1116, 'AS901'),
+(1004, 'Emily Norgaard', 'emily.norgaard@university.edu', 'MA. Drama and Theatre Studies', 'enorgaard_teach', '$2y$10$Q92Qi2Fvd20tSKOJNP34ou.2AuK2eHe5DQOl3yWjSe4sCX2PtEJyW', 'img/emily.jpg', 'Designed to equip students with advanced skills in editing and post-production processes, this program covers creative editing techniques, color grading, visual effects, and industry-standard workflow', 'pending', 1116, NULL),
 (1005, 'Benjamin Madsen', 'benjamin.madsen@university.edu', 'MA. Music Production', 'bmadsen_teacher', '$2y$10$mDMA0GZv/wFyvsUFIryRbOq.PwG7ujnjqKXyMZzPnxw9g3j5Z85RO', 'img/benjamin.jpg', 'Aimed at developing high-level music production skills, this program covers creative practices, technical studio work, critical listening, and research. Students are prepared for careers as skilled pr', 'pending', 1116, NULL),
 (1006, 'Linda Shah', 'linda.shah@university.edu', 'MFA. Studio Art', 'lshah_teacher', '$2y$10$WaPAnhfuX4qYNPMB2QKqyOSrZhAqDwdFx4Fwd49rcstktZ7wxOv7e', 'img/linda.jpg', 'Designed to equip students with advanced skills in editing and post-production processes, this program covers creative editing techniques, color grading, visual effects, and industry-standard workflow', 'pending', 1116, 'DI601'),
 (1007, 'Mark Taylor', 'mark.taylor@university.edu', 'MA. Electronic Music Production', 'mtaylor_teacher', '$2y$10$u0O7btHi563jPK97oOrtSOomBjaI2bsajxDk8SVQ4oxoAh8ZZNZdy', 'img/mark.jpg', 'This degree focuses on the intersection of music production, technology, and innovation. Students explore cutting-edge developments in music creation, utilizing advanced digital tools to produce and m', 'pending', 1116, NULL),
 (1008, 'Johan Sorensen', 'johan.sorensen@university.edu', 'MA. Fine Art Photography', 'jsorensen_teach', '$2y$10$tzickTMuuMrQvwjXnQwTaOgmrnmo2yZkeadJRPzRbJlDVLbb94TQu', 'img/johan.jpg', 'This course encourages students to explore photography as a fine art medium, fostering experimentation and critical engagement. Through seminars and workshops, students develop a personal artistic vis', 'pending', 1116, 'MP501'),
 (1009, 'Amrit Singh', 'amrit.singh@university.edu', 'MA. Film Production', 'asingh_teacher', '$2y$10$E7JBW7EyiUek0kTZBwD6k.MWS5IeiN1xMOqMULZFF.AaCa.lV3qDG', 'img/amrit.jpg', 'This degree provides comprehensive training in film and media production, including scriptwriting, cinematography, sound recording, and editing. Students gain both practical skills and theoretical kno', 'pending', 1116, NULL),
 (1010, 'Raj Patel', 'raj.patel@university.edu', 'MA. Digital Art and Design', 'rpatel_teacher', '$2y$10$cQKK5gLsd96f21krS9zvku.hJRY19oIZsHvayu3.2KSRx8J5SUW5y', 'img/raj.webp', 'Focusing on the dynamic field of digital art, this program integrates studio practice with studies in history, theory, and technology. Students explore interdisciplinary approaches to digital creation', 'pending', 1116, NULL),
-(1011, 'Anam Naeupane', 'aeman@gmail.com', 'Masters in Philosophy', 'anaeupane_teach', '$2y$10$oY9eaKIgZjCZF6Pdeoehte2PtMvF3qvtdgz78Xe/L50xVyxqGseR2', 'img/fashion.png', 'abcsddfgfg', 'pending', 1116, NULL);
+(1011, 'Anam Naeupane', 'aeman@gmail.com', 'Masters in Philosophy', 'anaeupane_teach', '$2y$10$oY9eaKIgZjCZF6Pdeoehte2PtMvF3qvtdgz78Xe/L50xVyxqGseR2', 'img/fashion.png', 'abcsddfgfg', 'pending', 1116, 'AS901');
 
 --
 -- Indexes for dumped tables
@@ -447,7 +466,7 @@ ALTER TABLE `teacher`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -459,7 +478,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `assignments`
 --
 ALTER TABLE `assignments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `course_materials`
